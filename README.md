@@ -3,7 +3,7 @@ BackupScripts
 
 Some scripts to help me do backup using md5 sums and squashfs
 
-Currently there are two script:
+Scripts and usage
 
 ## CopyWithMd5.sh ##
 Usage
@@ -27,4 +27,11 @@ Usage
 1. The newly created image is checked using the md5sums.txt file in the root of the image. 
 1. It does NOT delete source files, but gives an easy copy'n'paste text should you want to :-)
 
+## CreateSqfsImg.sh ##
+Usage
+  MakeList.sh
+
+1. Creates ~/bin
+1. Make the symlinks of the scripts to ~/bin
+  Consider adding ~/bin to the PATH variable
 
