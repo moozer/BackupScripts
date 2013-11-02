@@ -21,22 +21,21 @@ class Md5Db:
         self._initDb(self._Filename)
 
     def _initDb( self, DbFilename ):
+        self._con = lite.connect(DbFilename)
+        
+        cur = self._con.cursor()    
+        cur.execute('SELECT SQLITE_VERSION()')
+        
+        data = cur.fetchone()
+        
+        print "SQLite version: %s" % data                
+        
         try:
-            self._con = lite.connect(DbFilename)
-            
-            cur = self._con.cursor()    
-            cur.execute('SELECT SQLITE_VERSION()')
-            
-            data = cur.fetchone()
-            
-            print "SQLite version: %s" % data                
-            
             cur.execute('''CREATE TABLE md5value(md5set, md5, filename)''') 
-            
         except lite.Error, e:
+            print "Db already initialized"
             
-            print "Error %s:" % e.args[0]
-            sys.exit(1)
+
  
     
     @property
@@ -62,5 +61,11 @@ class Md5Db:
 
 
 if __name__ == '__main__':
+    if len( sys.argv ) < 2:
+        print "usage: SqfsMd5Db <db file> <md5 file to add>"
+        exit( -1) 
 
+    md5Db = Md5Db( sys.argv[0])
+    md5Db.Add( sys.argv[1] )
+    
     pass
