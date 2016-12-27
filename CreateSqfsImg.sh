@@ -10,7 +10,7 @@ fi
 
 BASENAME=$(basename $DIRTOPROCESS)
 SQDIR="/home/moz/squashfs/"
-MNTDIR="/mnt/moz/squashfs/"
+MNTDIR="/mnt/sqfs/moz/"
 SQFILENAME="$BASENAME.squashfs"
 MD5SUMFILE="md5sums.txt"
 CURDIR=$(pwd)
